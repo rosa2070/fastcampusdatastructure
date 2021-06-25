@@ -106,3 +106,43 @@ Node* insertNode(Node* node, int data) {
 	}
 	return node;
 }
+Node* root = NULL;
+
+void display(Node* node, int level) {
+	if (node != NULL) {
+		display(node->rightChild, level + 1);
+		printf("\n");
+		if (node == root) {
+			printf("Root: ");
+		}
+		for (int i = 0; i < level && node != root; i++) {
+			printf("    ");
+		}
+		printf("%d(%d)", node->data, getHeight(node));
+		display(node->leftChild, level + 1);
+	}
+}
+
+int main(void) {
+	root = insertNode(root, 7);
+	root = insertNode(root, 6);
+	root = insertNode(root, 5);
+	root = insertNode(root, 3);
+	root = insertNode(root, 1);
+	root = insertNode(root, 9);
+	root = insertNode(root, 8);
+	root = insertNode(root, 12);
+	root = insertNode(root, 16);
+	root = insertNode(root, 18);
+	root = insertNode(root, 23);
+	root = insertNode(root, 21);
+	root = insertNode(root, 14);
+	root = insertNode(root, 15);
+	root = insertNode(root, 19);
+	root = insertNode(root, 20);
+	display(root, 1); printf("\n");
+	system("pause");
+
+
+
+}
